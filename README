@@ -1,0 +1,1 @@
+1. 在使用redis-sentinel连接方式时，需要把libkvdb.so的路径加到linux下的LD_LIBRARY_PATH环境变量中,否则会报错:在java.library.path中找不到kvdb库

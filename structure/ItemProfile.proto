@@ -1,0 +1,216 @@
+package bfd.itemprofile;
+option java_package = "com.bfd.portrayalrpc.protobuf";
+option java_outer_classname = "ItemInfo";
+
+/**
+ * 基础信息
+ */
+message ItemBase {
+    required string iid = 1;                   // 商品ID
+    optional string name = 3;                  // 商品名称	(js准)
+    optional string url = 4;                   // 商品链接	(js准)
+    optional string large_img = 5;             // 商品大图片链接	(抓取准)
+    optional string small_img = 6;             // 商品小图片链接	(抓取准)
+    repeated string pid = 7;                   // 直接父类ID	(js准)
+    optional double price = 8;                 // 价格		(js准)
+    optional double market_price = 9;          // 市场价	(js准)
+    optional double member_price = 10;         // 会员价	(js准)
+    optional double vip_price = 11;            // VIP价		(js准)
+    optional double discount = 12;             // 折扣，100进制	(js准)
+    optional int64 start_time = 13;            // 上架时间	(js准)
+    optional int64 end_time = 14;              // 下架时间	(js准)
+    optional string description = 15;          // 商品描述	(抓取准,定为有字数限制)
+    optional string attr = 16;                 // 扩展属性，必须是一个JSON格式的字符串	(将属性按key解析后融合)
+    optional int64 creation_time = 17;         // 创建时间	(各自写最后一次更新的时间) 
+    repeated string brand = 18;		            // 品牌		(js准)
+    repeated string group = 19;		            // 商品组	(js准)
+    required string cid = 20;		            // 客户id
+    repeated string location = 21;            // 地域
+    repeated string district = 22;            // 商圈
+    repeated string tag = 23;                 // 标签
+    optional string type = 24;                  // 商品类型：团购，商品... (抓取准)
+    optional string price_str = 25;           // 价格字符串
+    repeated string author = 26;              // 书的作者/设计者，服务提供商
+    optional string address = 27;
+    repeated string category_id = 28;                // 类别id
+    repeated string brand_id = 29;                // 品牌id
+    repeated string color = 30;                      // 颜色
+    repeated string size = 31;                       // 尺寸
+    repeated string stock = 32;                  // 库存
+    optional string gender = 33;                 // 性别
+    repeated string material = 34;               // 材质
+    optional string style = 35;                 // 款式，风格
+    optional string production_place = 36;       // 产地
+    optional string weight = 37;                // 重量
+    optional string campaign = 38;              // 活动
+    repeated string goods = 39;              // 所属商品库
+    optional bool is_verified = 40;             // cache中的数据是否经过js提交的验证
+  repeated int32 stock_count = 41;         // 库存数量
+  optional string subtitle = 42;             // 副标题
+  optional string goods_type = 43;           // 商品特定类型
+  optional int32 rating_count = 44;          // 评价人数
+  optional double rating = 45;               // 评分
+  optional int32 buy_count = 46;             // 购买人数
+  optional string seller_name = 47;          // 卖家名称
+  optional string seller_no = 48;            // 卖家编号
+  optional string seller_link = 49;          // 卖家链接
+  optional int32 industry = 50;              // 行业标识
+  repeated string usage = 51;                //功能，用法
+  repeated Coordinate coord = 52;            // 坐标
+  repeated string season = 53;               // 适合季节
+  repeated string place = 54;                // 适用场合
+  repeated string style_1 = 55;              // 风格或款式
+  repeated string pattern = 56;              // 图案
+  optional string city_info = 57;            // json, 城市相关的商品信息
+
+    //旅游行业专属字段,每个行业预留32个字段
+    optional int32 days = 65; //旅行天数,对应上面字段size
+    optional int32 travelers = 66; //旅行人数 ，好像没有传
+    optional string departure = 67; //出发地，对应上面location
+    optional string destination = 68; //旅游目的地，对应上面district
+    repeated string sights = 69; //景点名称,暂时没有
+  optional int32 star = 70;  //酒店星级
+  repeated string traffic = 71;  //交通信息
+
+  // 房地产行业, 地址使用address
+  optional double unit_price = 111;  // 单价
+  optional string housing_type = 112; // 房型
+  optional string direction = 113; // 朝向
+  optional double area = 114; // 面积
+  optional string decoration = 115; //装修
+  optional int32 floor = 116; //所在楼层
+  optional int32 total_floor = 117; //总楼层
+  optional string building_time = 118; //建造年代
+  optional string owner = 119; //中介公司/开发商
+  optional string phone_number = 120;
+  optional string residential_area = 121; //住宅区
+  optional string housing_features = 122; //房源特色
+  optional string area_features = 123; //小区特色
+  optional string post_time = 124; //发布日期
+  optional string property_type = 125; //公寓、普通住宅、别墅等
+  optional string source = 126; //房源来源： 个人、中介
+  optional string sale_time = 127; //开盘时间
+  optional string checkin_time = 128; //入住时间
+  repeated HousingType housing_types = 129; //主力户型
+  optional int32 property_time = 130; //产权年限
+  optional string property_company = 131; //物业公司
+  optional double property_fee = 132; //物业费
+  optional string building_no = 133; //楼号
+  optional string housing_configuration = 134; //房子配置，如电视等
+  optional string building_type = 135; //板楼，塔楼
+  optional string rent_type = 136; //租房方式
+  optional string school_type = 137; //学校类别
+  optional string school_level = 138; //学校等级
+  optional string school_prop = 139; //学校性质
+  repeated string adjacent_school = 140; //附近学校
+  optional int32 view_count = 141; //看房记录
+  optional double rise_rate = 142; //成交价上涨率
+  optional int32 sale_count = 143; //在售房数量
+  optional int32 rent_count = 144; //租房数量
+}
+
+message Coordinate {
+  required double latitude = 1;
+  required double longitude = 2;
+}
+
+message HousingType {
+  required string name = 1;
+  optional string link = 2;
+}
+
+/**
+ * 抽取出的扩展数据
+ */
+
+message ItemProfile {
+    required string iid = 1;                  // 商品ID
+    repeated int32 category = 2;              // 所有品类id
+    repeated int32 tag = 3;                   // 所有标签id
+    repeated int32 brand = 4;                 // 品牌
+    optional int32 price_level = 5;           // 价位
+    optional int32 discount = 6;              // 折扣
+    optional int32 num_of_people = 7;         // 套餐人数
+    optional string city = 8;                 // 所在城市
+    optional string district = 9;             // 商圈
+    optional int32 appraisal = 10;            // 评价
+    optional string appraisal_url = 11;       // 评价页面的url
+    optional int64 creation_time = 12;        // 创建时间
+    required string cid = 13;		          // 客户id
+    optional int64 img_creation_time = 14;    // 图片创建时间
+    repeated string category_name = 15;              // 所有品类名称
+    repeated string tag_name = 16;                   // 所有标签名称
+    optional int32 industry = 26;                    // 行业标识
+    repeated double category_prob = 27;              // 每级分类对应的概率
+    repeated string brand_name = 28;                 // 品牌名称
+    repeated string category_name_new = 29;
+    repeated int32 category_id_new = 30;
+    repeated string brand_name_new = 31;
+
+    enum Gender {
+      UNKNOWN = 0;
+      MALE = 1;
+      FEMALE = 2;
+    }
+    optional Gender gender = 32 [default = UNKNOWN]; 
+
+    enum AgeLevel {
+			LEVEL_NULL = 0;
+			LEVEL_LT18 = 1;
+			LEVEL_18_24 = 2;
+			LEVEL_25_34 = 3;
+			LEVEL_35_49 = 4;
+			LEVEL_GT49 = 5;
+		}
+		optional AgeLevel age = 33 [default = LEVEL_NULL]; // 商品年龄段
+
+    //旅游行业专属字段,每个行业预留32个字段
+    optional int32 days = 17; //旅行天数
+    optional int32 travelers = 18; //旅行人数 
+    optional string departure = 19; //出发地
+    optional string destination = 20; //旅游目的地
+    optional string dest_area = 21; //旅游目的地所属行政区域，如：故宫 属于北京，
+    optional string tour_type = 22; //旅游方式(跟团、自助游、半自助)
+    optional string dest_type = 23; //目的地远近(周边、国内、国外)
+    repeated string sights = 24; //景点名称
+    repeated string sight_features = 25; //item所属景点特征
+    
+    //团购行业专属字段
+    repeated string districts = 49;  //增加商圈信息
+
+    //家电行业
+    optional int32 size = 81;  //尺寸
+
+    //标识人为是否测试完成
+    optional int64 ai_maker = 91;
+    
+    //手机行业
+    optional string mb_model = 110;//手机型号
+	optional string mb_date = 111;//手机上市时间，年月
+	repeated string mb_color = 112;//手机颜色 (repeated)
+	repeated string mb_support = 113;//手机制式，运营商*G（制式） (repeated)
+	optional string mb_os = 114;//手机操作系统 
+	optional string mb_resolution = 115;//屏幕分辨率，数字×数字像素
+	optional string mb_ram = 116;//RAM
+	optional string mb_rom = 117;//ROM
+	optional string mb_camera = 118;//后摄像头，万像素
+	optional string mb_screen = 119;//屏幕尺寸，英寸
+	optional string mb_pattern = 120;//网络模式，双卡双待等
+ 
+
+
+//电脑行业
+	optional string cmp_screen = 140; //屏幕尺寸
+	repeated string cmp_color = 141; //电脑颜色
+	optional string cmp_cpu = 142; //处理器
+	optional string cmp_video = 143; //显卡类型
+	optional string cmp_resolution = 144; //分辨率
+	optional string cmp_model = 145; //电脑型号
+	optional string cmp_os = 146; //操作系统
+	optional string cmp_date = 147; //上市时间，年-月
+	optional string cmp_memory = 148; //内存容量
+	optional string cmp_disk = 149; //硬盘容量
+	
+	optional string product_name = 999;//匹配上产品库中的产品名
+	optional string attr = 1000;//通用标签，json字典
+} 

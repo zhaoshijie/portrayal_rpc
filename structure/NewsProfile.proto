@@ -1,0 +1,215 @@
+package bfd.newsprofile; 
+option java_package = "com.bfd.portrayalrpc.protobuf";
+option java_outer_classname = "NewsInfo";
+
+ 
+message MapInfo {
+  optional string key = 1 ;
+  optional string value = 2 ;
+}
+
+message MapImage {
+  optional string key = 1 ;
+  repeated MapInfo value = 2 ;
+}
+
+message NewsBase {   
+  
+  required string iid = 1;
+  optional string title = 2;
+  optional string url = 3;
+  optional string content = 4;
+  optional int64  post_time = 5;   //not used
+  optional string uid = 6;   // not used
+  repeated string category = 7;
+  repeated string tag = 8;
+  optional string picture = 9;
+  optional int32  view_count = 10;
+  optional int32  comment_count = 11;
+  optional string attr = 12;  
+  optional int64  creation_time = 13;
+  required string type = 14;
+  optional string abstract = 15;
+  repeated string author = 16;
+
+  optional string cid = 17;
+  optional string bfdiid = 18 ;
+  optional string contents_html = 19 ;
+  optional string ptime = 20 ;
+  optional string keywords = 21 ;
+  optional bool   isVisible = 22 ;
+  optional bool   hasImage = 23 ;
+  optional string source = 24 ;
+  optional string evt = 25 ;
+  optional string loc = 26 ;
+  optional string agency = 27 ;
+  repeated MapImage contentimgs = 28 ;
+  repeated string relates = 29 ;
+  optional string thumbnail_id = 30 ;
+  optional string autothumbnail_id = 31 ;
+  optional string base_type = 32 ;
+  optional int64 ptime_long = 33 ;
+  optional int64 setCacheTime = 34 ;
+  optional bool  is_verified = 35;
+
+  optional string address = 36;
+  repeated string worktype = 37;
+  optional double minsalary = 38;
+  optional double maxsalary = 39;
+  optional string workyear = 40;
+  optional string diploma = 41;
+  optional string jobdescription = 42;
+  optional string desired_skills = 43;
+  optional string industry = 44;
+  optional string companysize = 45;
+  optional string companyname = 46;
+  optional double companyurl = 47;
+  optional string companystage = 48;
+  optional string companytype = 49;
+  optional string language = 50;
+  optional string management = 51;
+  optional int32 applicantsnum = 52;
+  optional int32 headcount = 53;
+  optional string jobtemptation = 54;
+  optional double end_time = 55;
+  optional string founder = 56;
+  optional string showsalary = 57;
+  optional string pagetype = 58;
+}  
+
+
+message NewsProfile {   
+  required string cid = 1 ;
+  required string iid = 2 ;
+  required string url = 3 ;
+  required string bfdiid = 4 ;
+  optional string bfd_cat = 5 ;
+  optional string bfd_tag = 6 ;
+  repeated string bfd_cat_vec = 7 ;
+  repeated string bfd_tag_vec = 8 ;
+  optional string loc = 9 ;
+  optional string car_brand = 10;
+  repeated string car_series = 11;
+  
+  //美食行业
+  repeated string bfd_taste_vec = 12;
+  repeated string bfd_material_vec = 13;
+  repeated string bfd_crowd_vec = 14;
+  repeated string bfd_craft_vec = 15;
+  repeated string bfd_disease_vec = 16;
+  repeated string bfd_viscera_vec = 17;
+  repeated string bfd_function_vec = 18;
+  repeated string bfd_ware_vec = 19;
+  optional int32  bfd_duration = 20;
+  repeated string bfd_style_vec = 21;
+  optional string bfd_difficulty = 22;
+  repeated string bfd_scene_vec = 23;
+  
+  //电影网行业 每增加一个行业要从之后的16个预留字段后开始
+  repeated string bfd_actor_vec = 29;       //演员
+  repeated string bfd_director_vec = 30;    //导演
+  optional string mv_name = 31;             //片名
+  optional string mv_area = 32;             //地区
+  optional string mv_year = 33;             //年份
+  repeated string mv_artist = 34;           //艺人
+  
+  optional double price = 49;              //手机价格
+  optional string brand = 50;              //品牌
+  //手机行业
+  optional string mb_model = 51;            //手机型号
+  optional string mb_date = 52;             //手机上市时间，年月
+  repeated string mb_color = 53;            //手机颜色
+  repeated string mb_support = 54;          //手机制式，运营商*G(制式)
+  optional string mb_os = 55;               //手机操作系统
+  optional string mb_resolution = 56;       //屏幕分辨率，数字×数字像素
+  optional string mb_ram = 57;              //RAM
+  optional string mb_rom = 58;              //ROM
+  optional string mb_camera = 59;           //后摄像头，万像素
+  optional string mb_screen = 60;           //屏幕尺寸，英寸
+  optional string mb_pattern = 61;          //网络模式，双卡双待等
+  
+  //汽车行业
+  optional string qc_manufacturers = 76;        //厂商
+  optional string qc_model=77;                  //型号
+  optional string qc_level=78;                  //级别  
+  optional string qc_ed_model = 79;             //版型
+  optional double qc_price = 80;                //汽车厂商指导价
+  optional string qc_displacement = 81;         //排量
+  repeated string qc_color = 82;                //颜色
+  optional string qc_drive = 83;                //驱动
+  optional string qc_gearbox = 84;              //变速箱
+  optional string qc_seats_num = 85;            //座位    
+  optional string qc_structure = 86;            //结构
+  optional string qc_fuel = 87;                 //燃料
+  optional string qc_intake_form = 88;          //进气方式
+  optional string qc_size = 89;                 //车身尺寸
+  optional string qc_year = 90;                 //年代款
+  optional int32  qc_cylinder = 91;             //气缸数
+  optional int32  qc_doors_num = 92;            //车门
+  optional double qc_used_car_price = 93;        //二手车价格
+
+  //读书行业 包括小说和杂志(杂志字段是小说字段的一部分,杂志的字段包含小说中)
+  optional string bk_name = 107;            //书名  中文名称
+  optional string bk_author = 108;          //作者  中文名称
+  optional string bk_translate = 109;       //翻译  中文名称
+  optional string bk_registerDate = 110;    //上架时间  年-月-日
+  optional string bk_updateTime = 111;      //更新时间  年-月-日
+  optional string bk_length = 112;          //篇幅  长篇、中篇、短篇
+  optional string bk_process = 113;         //写作进程  连载中、已完结
+  optional string bk_group = 114;           //群体   男性、女性等
+  optional string bk_download = 115;        //下载量
+  optional string bk_chapnum_fe = 116;      //收费章节 第*章 章名到第*章 章名或是单独的一章
+  optional string bk_sum = 117;             //总章节数
+  optional string bk_mark = 118;            //类型 1为图书2为章节
+  optional string bk_fee_page = 119;        //该页面是否收费
+  optional string bk_chapter_name = 120;    //章节名   
+  optional string bk_chapter_num = 121;     //第几章节
+
+
+
+  //IT数码行业 包括（印刷设备/办公设备 电脑整机 电脑配件/外设产品/网络产品 手机通讯软件与服务 摄影摄像 电子教育 ）
+
+  optional string it_brand = 137;                 //品牌
+  optional string it_model = 138;                 //型号
+  optional string it_type  = 139;                 //类型
+  optional string it_screen_size = 140;           //屏幕尺寸
+  optional string it_colour = 141;                //颜色
+  optional string it_cpu_model = 142;             //处理器
+  optional string it_memory = 143;                //内存
+  optional string it_hard = 144;                  //硬盘容量
+  optional string it_touch_screen = 145;          //触摸
+  optional string it_screen_resolution = 146;     //摄像头
+  optional string it_operator_support = 147;      //网络
+  optional string it_os = 148;                    //操作系统
+  optional string it_rom = 149;                   //ROM
+ 
+//财经分类 包括(债券 银行 外汇 股票 基金 期货 贵金属 信托 理财 保险 货币 财经人物 )
+
+  optional string cj_code = 165;    //代码
+  optional string cj_name  = 166;   //名称
+  optional string cj_style = 167;   //记帐方式
+  optional string cj_method = 168;  //付息方式
+  optional string cj_range = 169;   //涨跌幅
+  optional string cj_product = 170; //产品名称
+  optional string cj_type = 171;    //投资类型
+  optional string cj_currency = 172;//币种
+  optional string cj_market = 173;  //市值
+  optional string cj_NewPrice= 174; //最新价
+  optional string cj_company = 175; //发行机构
+  optional string cj_region = 176;   //投资领域 
+  optional string cj_area = 177;    //所在区域
+  optional string cj_deadline = 178;//产品期限
+  optional string cj_preEarnings= 179;    //预期收益
+
+    //医疗健康行业
+  repeated string md_name_symp = 180;             //症状名
+  repeated string md_department = 181;            //科室
+  repeated string md_function = 182;              //功能主治
+  optional string md_name_drug = 183;             //药品名
+  repeated string md_symptom = 184;               //药品适用症
+
+  //时尚行业（时尚名称包括：节目、杂志等名称）
+  repeated string fa_mingren = 190;             //时尚名人
+  optional string fa_name = 191;              //时尚名称
+}  
+
